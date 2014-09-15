@@ -2,9 +2,11 @@ package org.fishlab.app.framework;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 
 //import org.apache.commons.logging.Log;
@@ -63,6 +65,16 @@ public class ApplicationContext {
 		return inst;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public <T> List<T> findInstances(Class<? extends T> clazz) throws FrameworkException{
+		List<T> insts=new ArrayList<T>();
+		for (Class<?> cl : this.instanceStore.keySet()) {
+			if (clazz.isAssignableFrom(cl)) {
+				insts.add((T) this.instanceStore.get(cl));
+			}
+		}
+		return insts;
+	}
 	
 	private void interfaceAware(Class<?> clazz,Object inst) throws FrameworkException {
 		List<Class<?>> types=ClassUtils.getInterfacesIncludeSuperClass(clazz);
@@ -129,6 +141,13 @@ public class ApplicationContext {
 			throw new FrameworkException(e.getMessage());
 		} 
 		return inst;
+	}
+	/**自动装配*/
+	public <T> void awareInstance(T inst) throws FrameworkException   {
+		Class<?> clazz = inst.getClass();
+//		this.instanceStore.put(clazz, inst);
+		this.interfaceAware(clazz, inst);
+		this.annotationAware(clazz, inst);
 	}
 	
 	public void regist(Object inst){
