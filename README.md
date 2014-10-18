@@ -35,11 +35,11 @@ public class ApplicationContextDemo {
 }
 
 ```
+
 >* 运行，可看到输出
 ```console
 sample action excuted
 ```
-
 
 ##应用
 * [codegenius](https://github.com/fishlab/codegenius) 核心容器
@@ -48,4 +48,8 @@ sample action excuted
 * Autowired 注解注入
 * ApplicationContextAware，注入 ApplicationContext
 * FactoryBean<T>,单例工厂模式
+
+##下一步工作
+* 完善工厂模式(目前支持单例)
+* 再增加几个注解类型以精确注入
 
