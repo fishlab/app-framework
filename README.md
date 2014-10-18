@@ -2,7 +2,8 @@ app-framework
 =
 是一个很小的应用程序框架，实现了和springframework类似的自动注入。可用于小型应用程序如手机程序。
 ##用法
->* 编写如下测试用例
+
+* 编写如下测试用例
 ```java
 package org.fishlab.app.framework.test;
 import org.fishlab.app.framework.ApplicationContext;
@@ -33,9 +34,8 @@ public class ApplicationContextDemo {
 		samp.excuteActon();
 	}
 }
-
 ```
->* 运行，可看到输出
+* 运行，可看到输出
 ```console
 sample action excuted
 ```
