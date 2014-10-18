@@ -35,7 +35,6 @@ public class ApplicationContextDemo {
 }
 
 ```
-
 >* 运行，可看到输出
 ```console
 sample action excuted
